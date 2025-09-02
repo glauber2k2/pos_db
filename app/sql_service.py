@@ -54,15 +54,20 @@ def criar_produto(nome, preco, descricao, categoria):
 def listar_produtos():
     return Produto.query.all()
 
-def atualizar_produto(id, nome=None, preco=None, estoque=None):
+def obter_produto(id):
+    return Produto.query.get(id)
+
+def atualizar_produto(id, nome=None, preco=None, descricao=None, categoria=None):
     produto = Produto.query.get(id)
     if produto:
         if nome:
             produto.nome = nome
         if preco:
             produto.preco = preco
-        if estoque is not None:
-            produto.estoque = estoque
+        if descricao:
+            produto.descricao = descricao
+        if categoria:
+            produto.categoria = categoria
         db.session.commit()
     return produto
 
@@ -84,3 +89,25 @@ def criar_venda(id_cliente, id_produto, valor_total):
 
 def listar_vendas():
     return Venda.query.all()
+
+def obter_venda(id):
+    return Venda.query.get(id)
+
+def atualizar_venda(id, id_cliente=None, id_produto=None, valor_total=None):
+    venda = Venda.query.get(id)
+    if venda:
+        if id_cliente:
+            venda.id_cliente = id_cliente
+        if id_produto:
+            venda.id_produto = id_produto
+        if valor_total:
+            venda.valor_total = valor_total
+        db.session.commit()
+    return venda
+
+def deletar_venda(id):
+    venda = Venda.query.get(id)
+    if venda:
+        db.session.delete(venda)
+        db.session.commit()
+    return venda
