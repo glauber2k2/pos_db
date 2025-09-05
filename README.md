@@ -6,7 +6,7 @@ API RESTful desenvolvida em **Flask** para gerenciar clientes, produtos e vendas
 
 ## Autores
 - Diego Altenkirch Kabbaz  
-- Glauber de Oliveira Monteiro  
+- Glauber Souza Monteiro  
 
 ---
 
